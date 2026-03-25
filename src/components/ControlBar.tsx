@@ -1,0 +1,1 @@
+export default function ControlBar() { return <div style={{padding:'6px 10px',borderBottom:'1px solid var(--border)',color:'var(--text-dim)',fontSize:'12px',fontFamily:'var(--font-ui)'}}>ControlBar</div> }
