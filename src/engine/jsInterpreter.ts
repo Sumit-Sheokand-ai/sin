@@ -180,8 +180,14 @@ class JSInterpreter {
 
         let returnVal: Value = undefined
         try {
-          const body = (fnNodeTyped.body as Record<string, unknown>).body as acorn.Node[]
-          for (const stmt of body) this.evalNode(stmt)
+          const rawBody = fnNodeTyped.body as Record<string, unknown>
+          if (rawBody.type === 'BlockStatement') {
+            const stmts = rawBody.body as acorn.Node[]
+            for (const stmt of stmts) this.evalNode(stmt)
+          } else {
+            // concise arrow function — body is the expression itself
+            returnVal = this.evalNode(fnNodeTyped.body as acorn.Node)
+          }
         } catch (e: unknown) {
           const err = e as Record<string, unknown>
           if (err?.__return__) returnVal = err.value as Value
