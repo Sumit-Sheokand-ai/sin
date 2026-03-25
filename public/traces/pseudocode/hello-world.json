@@ -1,0 +1,1 @@
+{"language":"pseudocode","snippet":"hello-world","code":"PRINT \"Hello, World!\"","frames":[{"step":0,"line":1,"type":"normal","isBreakpoint":false,"variables":{},"callStack":[{"name":"(main)","line":1,"args":{}}],"heap":[],"output":["Hello, World!"],"error":null}]}
