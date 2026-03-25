@@ -21,6 +21,11 @@ function getLine(node: acorn.Node): number {
   return (node as { loc?: { start?: { line?: number } } }).loc?.start?.line ?? 1
 }
 
+function deepEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true
+  try { return JSON.stringify(a) === JSON.stringify(b) } catch { return false }
+}
+
 function makeFrame(
   state: InterpreterState,
   step: number,
@@ -33,7 +38,7 @@ function makeFrame(
     for (const [k, v] of scope) {
       if (k.startsWith('__')) continue
       const t = Array.isArray(v) ? 'array' : v === null ? 'null' : typeof v
-      const changed = prevVars[k] !== undefined && prevVars[k].value !== v
+      const changed = prevVars[k] !== undefined && !deepEqual(prevVars[k].value, v)
       variables[k] = { value: v, type: t, changed }
     }
   }
@@ -196,6 +201,13 @@ class JSInterpreter {
         return undefined
       }
 
+      case 'FunctionExpression':
+      case 'ArrowFunctionExpression': {
+        const func = (() => {}) as unknown as Record<string, unknown>
+        func.__node__ = node
+        return func
+      }
+
       case 'ReturnStatement': {
         const val = n.argument ? this.evalNode(n.argument as acorn.Node) : undefined
         throw { __return__: true, value: val }
@@ -233,7 +245,8 @@ class JSInterpreter {
         if (n.init) this.evalNode(n.init as acorn.Node)
         while (this.evalNode(n.test as acorn.Node)) {
           const loopLine = getLine(n.test as acorn.Node)
-          this.push(makeFrame(this.state, this.state.frames.length, loopLine, 'loop', pv))
+          const iterPv = this.prevVars()
+          this.push(makeFrame(this.state, this.state.frames.length, loopLine, 'loop', iterPv))
           this.evalNode(n.body as acorn.Node)
           if (n.update) this.evalNode(n.update as acorn.Node)
         }
@@ -242,11 +255,14 @@ class JSInterpreter {
       }
 
       case 'WhileStatement': {
+        this.state.scopes.push(new Map())
         while (this.evalNode(n.test as acorn.Node)) {
           const loopLine = getLine(n.test as acorn.Node)
-          this.push(makeFrame(this.state, this.state.frames.length, loopLine, 'loop', pv))
+          const iterPv = this.prevVars()
+          this.push(makeFrame(this.state, this.state.frames.length, loopLine, 'loop', iterPv))
           this.evalNode(n.body as acorn.Node)
         }
+        this.state.scopes.pop()
         return undefined
       }
 
