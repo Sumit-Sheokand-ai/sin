@@ -9,7 +9,7 @@ export default function TimerBadge() {
 
   return (
     <span style={{
-      fontSize: '11px', color: 'var(--text-hint)',
+      fontSize: '11px', color: 'var(--text-dim)',
       fontFamily: 'var(--font-code)', marginRight: '8px', userSelect: 'none',
     }}>
       ⏱ {display}
