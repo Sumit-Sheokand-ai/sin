@@ -33,7 +33,11 @@ interface VisualNode {
 }
 
 // ── Build tree from execution trace ──────────────────────────────────────────
-function buildTree(frames: ExecutionFrame[], upToStep: number): VisualNode[] {
+// Returns nodes AND the currently active node id (top of activePath at upToStep)
+function buildTree(
+  frames: ExecutionFrame[],
+  upToStep: number,
+): { nodes: VisualNode[]; activeId: string } {
   const nodes: VisualNode[] = []
   const nodeMap = new Map<string, VisualNode>()
   const activePath: string[] = ['root']
@@ -64,6 +68,9 @@ function buildTree(frames: ExecutionFrame[], upToStep: number): VisualNode[] {
     }
   }
 
+  // Active node = top of activePath at upToStep
+  const activeId = activePath[activePath.length - 1]
+
   // ── Top-down layout: y = depth × spacing, x = evenly spread per row ──
   const byDepth = new Map<number, VisualNode[]>()
   for (const n of nodes) {
@@ -80,26 +87,13 @@ function buildTree(frames: ExecutionFrame[], upToStep: number): VisualNode[] {
     const count = rowNodes.length
     const totalSpan = (count - 1) * (NODE_R * 2 + H_GAP)
     const startX = (canvasW - totalSpan) / 2
-    rowNodes.forEach((n, i) => {
-      n.x = startX + i * (NODE_R * 2 + H_GAP)
+    rowNodes.forEach((n, idx) => {
+      n.x = startX + idx * (NODE_R * 2 + H_GAP)
       n.y = PAD + depth * V_SPACING
     })
   })
 
-  return nodes
-}
-
-// ── Get which node is currently active ───────────────────────────────────────
-function getActiveId(frames: ExecutionFrame[], step: number, nodes: VisualNode[]): string {
-  if (!nodes.length) return 'root'
-  const frame = frames[Math.min(step, frames.length - 1)]
-  if (!frame) return 'root'
-  const top = frame.callStack[frame.callStack.length - 1]
-  if (!top || top.name === '(main)') return 'root'
-  for (let i = nodes.length - 1; i >= 0; i--) {
-    if (nodes[i].name === top.name) return nodes[i].id
-  }
-  return 'root'
+  return { nodes, activeId }
 }
 
 // ── Single animated node ──────────────────────────────────────────────────────
@@ -250,8 +244,7 @@ const ExecutionTreePanel = memo(function ExecutionTreePanel() {
     )
   }
 
-  const nodes = buildTree(frames, currentStep)
-  const activeId = getActiveId(frames, currentStep, nodes)
+  const { nodes, activeId } = buildTree(frames, currentStep)
 
   // Canvas dimensions
   const maxCount = Math.max(...Array.from(
