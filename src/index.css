@@ -7,24 +7,30 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #1e1e1e;
-  --bg-panel:  #252526;
-  --bg-hover:  #2a2d2e;
-  --border:    #2d2d2d;
-  --border-active: #3e3e3e;
-  --text:      #cccccc;
-  --text-dim:  #6a6a6a;
-  --text-hint: #858585;
-  --blue:      #007acc;
-  --purple:    #c586c0;
-  --teal:      #4ec9b0;
-  --red:       #f44747;
-  --yellow:    #dcdcaa;
-  --green:     #6a9955;
-  --font-ui:   'Inter', system-ui, sans-serif;
-  --font-code: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
-  --radius:    8px;
-  --radius-sm: 4px;
+  /* Catppuccin Mocha — OLED-ready dark */
+  --bg:            #0d0d14;
+  --bg-panel:      #11111b;
+  --bg-surface:    #181825;
+  --bg-hover:      #1e1e2e;
+  --border:        #313244;
+  --border-active: #45475a;
+  --text:          #cdd6f4;
+  --text-dim:      #6c7086;
+  --text-hint:     #9399b2;
+  --blue:          #89b4fa;
+  --purple:        #cba6f7;
+  --teal:          #94e2d5;
+  --red:           #f38ba8;
+  --yellow:        #f9e2af;
+  --green:         #a6e3a1;
+  --orange:        #fab387;
+  --font-ui:       'Inter', system-ui, sans-serif;
+  --font-code:     'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --radius:        10px;
+  --radius-sm:     6px;
+  --glow-blue:     rgba(137,180,250,0.35);
+  --glow-purple:   rgba(203,166,247,0.35);
+  --glow-green:    rgba(166,227,161,0.35);
 }
 
 html, body, #root { height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-ui); }
@@ -32,3 +38,39 @@ html, body, #root { height: 100%; background: var(--bg); color: var(--text); fon
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 3px; }
+
+/* ─── ReactBits animation keyframes ─────────────────── */
+
+/* StarBorder — comet traces top/bottom edge */
+@keyframes star-move-bottom {
+  0%   { transform: translate(0%, 0%);    opacity: 1; }
+  100% { transform: translate(-100%, 0%); opacity: 0; }
+}
+@keyframes star-move-top {
+  0%   { transform: translate(0%, 0%);   opacity: 1; }
+  100% { transform: translate(100%, 0%); opacity: 0; }
+}
+
+/* ShinyText — shimmer sweep */
+@keyframes shiny-sweep {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+/* Glow pulse for active nodes */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--glow-blue),  0 0 20px var(--glow-blue); }
+  50%       { box-shadow: 0 0 18px var(--glow-blue), 0 0 40px var(--glow-blue); }
+}
+
+/* Tab active underline slide */
+@keyframes tab-slide-in {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Scan line — premium panel header effect */
+@keyframes scan-line {
+  0%   { background-position: 0 0; }
+  100% { background-position: 0 100px; }
+}

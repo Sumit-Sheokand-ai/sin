@@ -1,6 +1,8 @@
 import { memo } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useExecutionStore } from '../store/executionStore'
+import DecryptedText from './ui/DecryptedText'
+import ShinyText from './ui/ShinyText'
 
 function formatValue(v: unknown): string {
   if (v === null) return 'null'
@@ -12,9 +14,9 @@ function formatValue(v: unknown): string {
 }
 
 const TYPE_COLORS: Record<string, string> = {
-  number: '#b5cea8', string: '#ce9178', boolean: '#569cd6',
-  null: '#569cd6', undefined: '#569cd6', array: '#4ec9b0',
-  object: '#c586c0', ref: '#4ec9b0',
+  number: '#f9e2af', string: '#fab387', boolean: '#89b4fa',
+  null: '#89b4fa', undefined: '#89b4fa', array: '#94e2d5',
+  object: '#cba6f7', ref: '#94e2d5',
 }
 
 const ROW_SPRING = { type: 'spring' as const, stiffness: 400, damping: 25 }
@@ -27,7 +29,7 @@ const VariablesPanel = memo(function VariablesPanel() {
 
   if (!frame) {
     return (
-      <div style={{ color: 'var(--text-dim)', fontSize: '12px', padding: '16px', textAlign: 'center' }}>
+      <div style={{ color: 'var(--text-dim)', fontSize: '12px', padding: '20px', textAlign: 'center', fontFamily: 'var(--font-ui)' }}>
         Click Run to start execution
       </div>
     )
@@ -35,7 +37,7 @@ const VariablesPanel = memo(function VariablesPanel() {
 
   const vars = Object.entries(frame.variables)
   if (vars.length === 0) {
-    return <div style={{ color: 'var(--text-dim)', fontSize: '12px', padding: '16px', textAlign: 'center' }}>No variables in scope</div>
+    return <div style={{ color: 'var(--text-dim)', fontSize: '12px', padding: '20px', textAlign: 'center' }}>No variables in scope</div>
   }
 
   return (
@@ -45,36 +47,55 @@ const VariablesPanel = memo(function VariablesPanel() {
           <motion.div
             key={name}
             layout={!reduced}
-            initial={reduced ? false : { scale: 0.85, x: -8, opacity: 0 }}
+            initial={reduced ? false : { scale: 0.85, x: -12, opacity: 0 }}
             animate={reduced
               ? { scale: 1, x: 0, opacity: 1 }
               : info.changed
-                ? { scale: [1, 1.06, 1], x: 0, opacity: 1,
-                    transition: { scale: { duration: 0.35 }, x: ROW_SPRING, opacity: ROW_SPRING } }
+                ? { scale: [1, 1.05, 1], x: 0, opacity: 1,
+                    transition: { scale: { duration: 0.4 }, x: ROW_SPRING, opacity: ROW_SPRING } }
                 : { scale: 1, x: 0, opacity: 1, transition: ROW_SPRING }
             }
             exit={reduced ? { opacity: 0 } : { scale: 0.85, opacity: 0, transition: { duration: 0.18 } }}
             style={{
-              display: 'flex', alignItems: 'center', padding: '5px 6px',
-              borderRadius: 'var(--radius-sm)', marginBottom: '2px',
-              background: info.changed ? 'rgba(166,227,161,0.08)' : 'transparent',
-              border: `1px solid ${info.changed ? 'rgba(166,227,161,0.25)' : 'transparent'}`,
-              boxShadow: info.changed ? '0 0 8px rgba(166,227,161,0.15)' : 'none',
+              display: 'flex', alignItems: 'center', padding: '6px 8px',
+              borderRadius: 'var(--radius-sm)', marginBottom: '3px',
+              background: info.changed
+                ? 'rgba(166,227,161,0.06)'
+                : 'rgba(255,255,255,0.02)',
+              border: `1px solid ${info.changed ? 'rgba(166,227,161,0.25)' : 'rgba(49,50,68,0.6)'}`,
+              boxShadow: info.changed ? '0 0 12px rgba(166,227,161,0.12)' : 'none',
               transition: 'background 0.3s, border 0.3s, box-shadow 0.3s',
             }}
           >
-            <span style={{ color: 'var(--yellow)', minWidth: '80px', flexShrink: 0 }}>{name}</span>
-            <span style={{ color: 'var(--text-dim)', margin: '0 6px', fontSize: '10px' }}>
+            {/* variable name */}
+            <span style={{ color: 'var(--yellow)', minWidth: '80px', flexShrink: 0, fontWeight: 600 }}>
+              {name}
+            </span>
+            {/* type badge */}
+            <span style={{ margin: '0 8px', fontSize: '9px', flexShrink: 0 }}>
               <span style={{
-                background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)',
-                borderRadius: '3px', padding: '1px 4px',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid var(--border)',
+                borderRadius: '4px', padding: '2px 5px',
                 color: TYPE_COLORS[info.type] ?? 'var(--text-dim)',
+                fontWeight: 500,
               }}>{info.type}</span>
             </span>
-            <span style={{ color: 'var(--text)', flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {formatValue(info.value)}
+            {/* value — scrambles when changed */}
+            <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {info.changed && !reduced
+                ? <DecryptedText
+                    text={formatValue(info.value)}
+                    speed={35}
+                    style={{ color: 'var(--green)', fontWeight: 600 }}
+                  />
+                : <span style={{ color: 'var(--text)' }}>{formatValue(info.value)}</span>
+              }
             </span>
-            {info.changed && <span style={{ color: 'var(--green)', fontSize: '10px', marginLeft: '4px' }}>●</span>}
+            {/* changed indicator */}
+            {info.changed && (
+              <ShinyText text="●" speed={2} style={{ marginLeft: '6px', fontSize: '11px' }} />
+            )}
           </motion.div>
         ))}
       </AnimatePresence>

@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useExecutionStore } from '../store/executionStore'
 import type { ExecutionFrame } from '../types/execution'
+import StarBorder from './ui/StarBorder'
 
 // Layout constants
 const H_SPACING = 170  // px between depth levels
@@ -111,73 +112,83 @@ interface NodeProps {
 const TreeNodeEl = memo(function TreeNodeEl({ node, isActive, reduced }: NodeProps) {
   const col = DEPTH_COLORS[node.depth % DEPTH_COLORS.length]
 
-  return (
+  const inner = (
     <motion.div
-      layout
       initial={reduced ? false : { scale: 0, opacity: 0 }}
       animate={
         isActive && !reduced
           ? {
-              scale: [1, 1.06, 1],
-              boxShadow: [
-                `0 0 0px ${col.glow}`,
-                `0 0 18px ${col.glow}`,
-                `0 0 8px ${col.glow}`,
-              ],
-              transition: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
+              scale: [1, 1.04, 1],
+              transition: { duration: 2.5, repeat: Infinity, ease: 'easeInOut' },
             }
           : { scale: 1, opacity: 1 }
       }
       style={{
-        position: 'absolute',
-        left: node.x,
-        top: node.y,
         width: NODE_W,
         height: NODE_H,
         borderRadius: 8,
-        background: isActive ? col.bg : 'rgba(49,50,68,0.7)',
-        border: `1.5px solid ${isActive ? col.border : 'rgba(69,71,90,0.7)'}`,
-        boxShadow: isActive ? `0 0 10px ${col.glow}` : 'none',
+        background: isActive
+          ? `linear-gradient(135deg, ${col.bg}, rgba(15,15,25,0.85))`
+          : 'rgba(24,24,37,0.8)',
+        boxShadow: isActive && !reduced ? `0 0 24px ${col.glow}, inset 0 0 12px ${col.bg}` : 'none',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '4px 6px',
+        padding: '5px 7px',
         cursor: 'default',
-        backdropFilter: 'blur(4px)',
-        transition: reduced ? 'none' : 'border 0.3s, box-shadow 0.3s, background 0.3s',
+        backdropFilter: 'blur(8px)',
+        transition: reduced ? 'none' : 'box-shadow 0.4s, background 0.4s',
       }}
     >
       {isActive && !reduced && (
         <motion.div
-          animate={{ scale: [1, 1.6, 1], opacity: [0.4, 0, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity, ease: 'easeOut' }}
+          animate={{ scale: [1, 1.7, 1], opacity: [0.5, 0, 0.5] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'easeOut' }}
           style={{
-            position: 'absolute', inset: -6, borderRadius: 12,
-            border: `1px solid ${col.border}`,
+            position: 'absolute', inset: -8, borderRadius: 14,
+            border: `1.5px solid ${col.border}`,
             pointerEvents: 'none',
           }}
         />
       )}
       <div style={{
         fontFamily: 'var(--font-code)', fontSize: '11px', fontWeight: 700,
-        color: isActive ? col.text : 'var(--text)',
+        color: isActive ? col.text : 'var(--text-hint)',
         overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-        maxWidth: NODE_W - 12,
+        maxWidth: NODE_W - 14,
+        textShadow: isActive && !reduced ? `0 0 8px ${col.text}` : 'none',
+        transition: 'color 0.3s, text-shadow 0.3s',
       }}>
         {node.name}
       </div>
       {node.args && (
         <div style={{
           fontFamily: 'var(--font-code)', fontSize: '9px',
-          color: 'var(--text-dim)', marginTop: 2,
+          color: isActive ? col.text + 'bb' : 'var(--text-dim)', marginTop: 2,
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-          maxWidth: NODE_W - 12,
+          maxWidth: NODE_W - 14,
         }}>
           {node.args}
         </div>
       )}
     </motion.div>
+  )
+
+  if (isActive && !reduced) {
+    return (
+      <StarBorder color={col.border} speed="2.5s" style={{ width: NODE_W, height: NODE_H }}>
+        {inner}
+      </StarBorder>
+    )
+  }
+  return (
+    <div style={{
+      width: NODE_W, height: NODE_H, borderRadius: 8,
+      border: `1px solid rgba(69,71,90,0.5)`,
+    }}>
+      {inner}
+    </div>
   )
 })
 
