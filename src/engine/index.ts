@@ -3,8 +3,6 @@ import type { ExecutionFrame, Language } from '../types/execution'
 import { runJS } from './jsInterpreter'
 import { loadTrace } from './traceLoader'
 
-const SIMULATED: Language[] = ['java', 'c', 'cpp', 'pseudocode']
-
 let pyodideWorker: Worker | null = null
 
 function getPyodideWorker(): Worker {
