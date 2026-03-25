@@ -2036,6 +2036,7 @@ npm test -- tests/components/VariablesPanel.test.tsx
 
 - [ ] **Step 3: Implement VariablesPanel**
 
+{% raw %}
 ```tsx
 // src/components/VariablesPanel.tsx
 import { memo } from 'react'
@@ -2107,6 +2108,7 @@ const VariablesPanel = memo(function VariablesPanel() {
 
 export default VariablesPanel
 ```
+{% endraw %}
 
 - [ ] **Step 4: Run tests — expect pass**
 
