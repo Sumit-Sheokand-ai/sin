@@ -1,13 +1,19 @@
 /* eslint-disable */
 // @ts-nocheck
 let pyodide: any = null
+let loadingPromise: Promise<any> | null = null
 
 async function loadPyodide() {
   if (pyodide) return pyodide
-  // Use ESM import — importScripts() is not available in ES module workers
-  const { loadPyodide: load } = await import('https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.mjs')
-  pyodide = await load()
-  return pyodide
+  if (!loadingPromise) {
+    loadingPromise = (async () => {
+      // Use ESM import — importScripts() is not available in ES module workers
+      const { loadPyodide: load } = await import('https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.mjs')
+      pyodide = await load()
+      return pyodide
+    })()
+  }
+  return loadingPromise
 }
 
 self.onmessage = async (e: MessageEvent) => {
@@ -149,14 +155,14 @@ except Exception as e:
     expl, sugg = explanations.get(err_type, (f'An error occurred: {str(e)}', 'Check the highlighted line for mistakes.'))
     _frames.append({
         'step': len(_frames),
-        'line': int(err_line) if isinstance(err_line, int) else (_frames[-1]['line'] if _frames else 1),
+        'line': int(err_line) if isinstance(err_line, int) and err_line is not None else (_frames[-1]['line'] if _frames else 1),
         'type': 'error',
         'isBreakpoint': False,
         'variables': _frames[-1]['variables'] if _frames else {},
         'callStack': list(_call_stack),
         'heap': [],
         'output': list(_output),
-        'error': {'type': err_type, 'message': str(e), 'explanation': expl, 'suggestion': sugg, 'line': int(err_line) if isinstance(err_line, int) else 1}
+        'error': {'type': err_type, 'message': str(e), 'explanation': expl, 'suggestion': sugg, 'line': int(err_line) if isinstance(err_line, int) and err_line is not None else 1}
     })
 finally:
     sys.settrace(None)
