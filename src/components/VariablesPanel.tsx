@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useExecutionStore } from '../store/executionStore'
 
 function formatValue(v: unknown): string {
@@ -22,6 +22,7 @@ const ROW_SPRING = { type: 'spring' as const, stiffness: 400, damping: 25 }
 const VariablesPanel = memo(function VariablesPanel() {
   const frames = useExecutionStore(s => s.frames)
   const currentStep = useExecutionStore(s => s.currentStep)
+  const reduced = useReducedMotion() ?? false
   const frame = frames[currentStep]
 
   if (!frame) {
@@ -43,14 +44,16 @@ const VariablesPanel = memo(function VariablesPanel() {
         {vars.map(([name, info]) => (
           <motion.div
             key={name}
-            layout
-            initial={{ scale: 0.85, x: -8, opacity: 0 }}
-            animate={info.changed
-              ? { scale: [1, 1.06, 1], x: 0, opacity: 1,
-                  transition: { scale: { duration: 0.35 }, x: ROW_SPRING, opacity: ROW_SPRING } }
-              : { scale: 1, x: 0, opacity: 1, transition: ROW_SPRING }
+            layout={!reduced}
+            initial={reduced ? false : { scale: 0.85, x: -8, opacity: 0 }}
+            animate={reduced
+              ? { scale: 1, x: 0, opacity: 1 }
+              : info.changed
+                ? { scale: [1, 1.06, 1], x: 0, opacity: 1,
+                    transition: { scale: { duration: 0.35 }, x: ROW_SPRING, opacity: ROW_SPRING } }
+                : { scale: 1, x: 0, opacity: 1, transition: ROW_SPRING }
             }
-            exit={{ scale: 0.85, opacity: 0, transition: { duration: 0.18 } }}
+            exit={reduced ? { opacity: 0 } : { scale: 0.85, opacity: 0, transition: { duration: 0.18 } }}
             style={{
               display: 'flex', alignItems: 'center', padding: '5px 6px',
               borderRadius: 'var(--radius-sm)', marginBottom: '2px',

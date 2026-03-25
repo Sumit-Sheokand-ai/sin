@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { useExecutionStore } from '../store/executionStore'
 
 const FRAME_SPRING = { type: 'spring' as const, stiffness: 350, damping: 28 }
@@ -7,6 +7,7 @@ const FRAME_SPRING = { type: 'spring' as const, stiffness: 350, damping: 28 }
 const CallStackPanel = memo(function CallStackPanel() {
   const frames = useExecutionStore(s => s.frames)
   const currentStep = useExecutionStore(s => s.currentStep)
+  const reduced = useReducedMotion() ?? false
   const frame = frames[currentStep]
 
   if (!frame) {
@@ -25,10 +26,10 @@ const CallStackPanel = memo(function CallStackPanel() {
         {stack.map((f, i) => (
           <motion.div
             key={`${f.name}-${i}`}
-            layout
-            initial={{ x: -20, opacity: 0, scale: 0.92 }}
-            animate={{ x: 0, opacity: 1, scale: 1, transition: FRAME_SPRING }}
-            exit={{ x: 20, opacity: 0, scale: 0.88, transition: { duration: 0.2 } }}
+            layout={!reduced}
+            initial={reduced ? false : { x: -20, opacity: 0, scale: 0.92 }}
+            animate={{ x: 0, opacity: 1, scale: 1, transition: reduced ? { duration: 0 } : FRAME_SPRING }}
+            exit={reduced ? { opacity: 0 } : { x: 20, opacity: 0, scale: 0.88, transition: { duration: 0.2 } }}
             style={{
               padding: '6px 8px', marginBottom: '4px', borderRadius: 'var(--radius-sm)',
               background: i === 0 ? 'rgba(0,122,204,0.1)' : 'rgba(255,255,255,0.03)',

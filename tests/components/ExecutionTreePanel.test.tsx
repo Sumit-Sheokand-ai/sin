@@ -20,9 +20,10 @@ describe('ExecutionTreePanel', () => {
     expect(container).toBeTruthy()
   })
 
-  it('renders canvas when frames exist', () => {
+  it('renders tree nodes when frames exist', () => {
     useExecutionStore.setState({ frames: [makeFrame()], currentStep: 0 })
     const { container } = render(<ExecutionTreePanel />)
-    expect(container.querySelector('canvas')).toBeTruthy()
+    // ExecutionTreePanel uses DOM nodes (SVG + divs), not canvas
+    expect(container.querySelector('svg')).toBeTruthy()
   })
 })
