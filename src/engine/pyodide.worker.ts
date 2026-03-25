@@ -11,7 +11,7 @@ async function loadPyodide() {
       const { loadPyodide: load } = await import('https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.mjs')
       pyodide = await load()
       return pyodide
-    })()
+    })().catch((err) => { loadingPromise = null; throw err })
   }
   return loadingPromise
 }
