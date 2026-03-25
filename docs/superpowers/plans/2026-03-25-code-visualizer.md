@@ -1574,7 +1574,7 @@ git commit -m "feat: add Pyodide Web Worker for Python execution"
 
 **Files:**
 - Create: `src/engine/traceLoader.ts`
-- Create: `src/traces/java/hello-world.json` (and 19 more trace files)
+- Create: `public/traces/java/hello-world.json` (and 19 more trace files)
 
 - [ ] **Step 1: Create traceLoader.ts**
 
