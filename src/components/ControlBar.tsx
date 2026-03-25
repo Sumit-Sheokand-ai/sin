@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { useExecutionStore } from '../store/executionStore'
 import { runCode } from '../engine/index'
 
@@ -11,12 +11,11 @@ export default function ControlBar() {
     setFrames, setStatus, setElapsedMs, breakpoints, status,
   } = useExecutionStore()
 
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
-
   const handleRun = async () => {
     setStatus('loading')
     setPlaying(false)
     const { frames, elapsedMs } = await runCode(code, language, breakpoints)
+    if (!frames.length) { setStatus('idle'); return }
     setFrames(frames)
     setElapsedMs(elapsedMs)
     setStatus(frames[frames.length - 1]?.error ? 'error' : 'paused')
@@ -38,23 +37,22 @@ export default function ControlBar() {
 
   // Auto-play with breakpoint check
   useEffect(() => {
-    if (intervalRef.current) clearInterval(intervalRef.current)
     if (!isPlaying) return
-    intervalRef.current = setInterval(() => {
+    const id = setInterval(() => {
       const { currentStep: cs, frames: fs, setCurrentStep: scs, setPlaying: sp } = useExecutionStore.getState()
       const next = cs + 1
       if (next >= fs.length) { sp(false); return }
       scs(next)
       if (fs[next]?.isBreakpoint) sp(false)
     }, BASE_INTERVAL / speed)
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+    return () => clearInterval(id)
   }, [isPlaying, speed])
 
   // Keyboard shortcuts
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.target as HTMLElement).tagName === 'TEXTAREA') return
-      if (e.key === ' ') { e.preventDefault(); setPlaying(!isPlaying) }
+      if (e.key === ' ') { e.preventDefault(); setPlaying(!useExecutionStore.getState().isPlaying) }
       if (e.key === 'ArrowRight') stepForward()
       if (e.key === 'ArrowLeft') stepBack()
       if (e.key === 'r' || e.key === 'R') handleReset()
