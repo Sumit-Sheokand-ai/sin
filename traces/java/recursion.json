@@ -1,1 +1,3051 @@
-{"language":"java","snippet":"recursion","code":"public class Main {\n  static int fib(int n) {\n    if (n <= 1) return n;\n    return fib(n-1) + fib(n-2);\n  }\n  public static void main(String[] args) {\n    System.out.println(fib(5));\n  }\n}","frames":[{"step":0,"line":6,"type":"call","isBreakpoint":false,"variables":{},"callStack":[{"name":"main","line":6,"args":{}}],"heap":[],"output":[],"error":null},{"step":1,"line":7,"type":"normal","isBreakpoint":false,"variables":{},"callStack":[{"name":"main","line":7,"args":{}}],"heap":[],"output":[],"error":null},{"step":2,"line":2,"type":"call","isBreakpoint":false,"variables":{"n":{"value":5,"type":"int","changed":true}},"callStack":[{"name":"main","line":7,"args":{}},{"name":"fib","line":2,"args":{"n":5}}],"heap":[],"output":[],"error":null},{"step":3,"line":3,"type":"normal","isBreakpoint":false,"variables":{"n":{"value":5,"type":"int","changed":false}},"callStack":[{"name":"main","line":7,"args":{}},{"name":"fib","line":3,"args":{"n":5}}],"heap":[],"output":[],"error":null},{"step":4,"line":4,"type":"normal","isBreakpoint":false,"variables":{"n":{"value":5,"type":"int","changed":false}},"callStack":[{"name":"main","line":7,"args":{}},{"name":"fib","line":4,"args":{"n":5}}],"heap":[],"output":[],"error":null},{"step":5,"line":7,"type":"return","isBreakpoint":false,"variables":{},"callStack":[{"name":"main","line":7,"args":{}}],"heap":[],"output":["5"],"error":null}]}
+{
+  "language": "java",
+  "snippet": "recursion",
+  "code": "public class Main {\n  static int fib(int n) {\n    if (n <= 1) return n;\n    return fib(n-1) + fib(n-2);\n  }\n  public static void main(String[] args) {\n    System.out.println(fib(5));\n  }\n}",
+  "frames": [
+    {
+      "step": 0,
+      "line": 4,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {},
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 1,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 5,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 2,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 5,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 3,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 5,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 4,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 4,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 5,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 4,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 6,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 4,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 7,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 8,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 9,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 10,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 11,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 12,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 13,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 14,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 15,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 16,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 17,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 18,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 19,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 20,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 21,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 22,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 23,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 24,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 25,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 26,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 27,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 28,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 4,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 29,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 30,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 31,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 32,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 33,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 34,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 35,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 36,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 37,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 38,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 39,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 40,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 41,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 4,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 3,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 4
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 42,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 43,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 5,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 3,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 44,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 45,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 46,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 47,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 48,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 49,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 50,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 51,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 52,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 53,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 54,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 55,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 0,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 0
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 56,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 57,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 0,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 2
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 58,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 59,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 60,
+      "line": 1,
+      "type": "call",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 61,
+      "line": 2,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 1
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 62,
+      "line": 2,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 63,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 1,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 1,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 3
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 64,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 2,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 65,
+      "line": 3,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "n": {
+          "value": 5,
+          "type": "number",
+          "changed": false
+        },
+        "r1": {
+          "value": 3,
+          "type": "number",
+          "changed": false
+        },
+        "r2": {
+          "value": 2,
+          "type": "number",
+          "changed": true
+        },
+        "result": {
+          "value": 5,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        },
+        {
+          "name": "fib",
+          "line": 1,
+          "args": {
+            "n": 5
+          }
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 66,
+      "line": 3,
+      "type": "return",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 5,
+          "type": "number",
+          "changed": false
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        }
+      ],
+      "heap": [],
+      "output": [],
+      "error": null
+    },
+    {
+      "step": 67,
+      "line": 4,
+      "type": "normal",
+      "isBreakpoint": false,
+      "variables": {
+        "result": {
+          "value": 5,
+          "type": "number",
+          "changed": true
+        }
+      },
+      "callStack": [
+        {
+          "name": "(main)",
+          "line": 4,
+          "args": {}
+        }
+      ],
+      "heap": [],
+      "output": [
+        "5"
+      ],
+      "error": null
+    }
+  ]
+}
