@@ -1,3 +1,5 @@
+{% raw %}
+
 # Code Execution Visualizer Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
@@ -2035,8 +2037,6 @@ npm test -- tests/components/VariablesPanel.test.tsx
 ```
 
 - [ ] **Step 3: Implement VariablesPanel**
-
-{% raw %}
 ```tsx
 // src/components/VariablesPanel.tsx
 import { memo } from 'react'
@@ -2108,7 +2108,6 @@ const VariablesPanel = memo(function VariablesPanel() {
 
 export default VariablesPanel
 ```
-{% endraw %}
 
 - [ ] **Step 4: Run tests — expect pass**
 
@@ -2182,7 +2181,6 @@ npm test -- tests/components/CallStackPanel.test.tsx
 ```
 
 - [ ] **Step 3: Implement CallStackPanel**
-
 ```tsx
 // src/components/CallStackPanel.tsx
 import { memo } from 'react'
@@ -2664,3 +2662,5 @@ Task 1 (scaffold)
                           └── Task 17 (GitHub Pages)
                                 └── Task 18 (QA)
 ```
+
+{% endraw %}
