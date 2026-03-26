@@ -1,47 +1,113 @@
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
 @import '@fontsource/jetbrains-mono/400.css';
 @import '@fontsource/jetbrains-mono/500.css';
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Catppuccin Mocha — OLED-ready dark */
-  --bg:            #0d0d14;
-  --bg-panel:      #11111b;
-  --bg-surface:    #181825;
-  --bg-hover:      #1e1e2e;
-  --border:        #313244;
-  --border-active: #45475a;
-  --text:          #cdd6f4;
-  --text-dim:      #6c7086;
-  --text-hint:     #9399b2;
-  --blue:          #89b4fa;
-  --purple:        #cba6f7;
+  /* ── Luminous Tracer — Material 3 Dark ── */
+  --bg:            #0d0d1c;
+  --bg-panel:      #12122a;
+  --bg-surface:    #1a1a30;
+  --bg-hover:      #24243a;
+  --bg-surface-hi: #2a2a42;
+  --border:        #474658;
+  --border-dim:    #1e1e32;
+  --border-active: #605f74;
+
+  --text:          #e6e3fa;
+  --text-dim:      #aba9be;
+  --text-hint:     #757487;
+
+  /* Primary — electric blue */
+  --primary:       #8cb7fe;
+  --primary-dim:   #7faaef;
+  --on-primary:    #003469;
+  --primary-glow:  rgba(140, 183, 254, 0.35);
+
+  /* Secondary — violet */
+  --secondary:     #d1abfd;
+  --secondary-dim: #c39eee;
+  --on-secondary:  #48286f;
+  --secondary-glow: rgba(209, 171, 253, 0.35);
+
+  /* Tertiary — peach */
+  --tertiary:      #ffc29d;
+  --tertiary-dim:  #e9a479;
+
+  /* Semantic */
+  --blue:          #8cb7fe;
+  --purple:        #d1abfd;
   --teal:          #94e2d5;
-  --red:           #f38ba8;
+  --red:           #ff716c;
+  --error:         #ff716c;
+  --error-dim:     #d7383b;
   --yellow:        #f9e2af;
   --green:         #a6e3a1;
-  --orange:        #fab387;
+  --orange:        #ffc29d;
+
+  /* Typography */
+  --font-headline: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-ui:       'Inter', system-ui, sans-serif;
   --font-code:     'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+
+  /* Geometry */
   --radius:        10px;
-  --radius-sm:     6px;
-  --glow-blue:     rgba(137,180,250,0.35);
-  --glow-purple:   rgba(203,166,247,0.35);
-  --glow-green:    rgba(166,227,161,0.35);
+  --radius-sm:     7px;
+  --radius-lg:     16px;
+  --radius-xl:     24px;
+
+  /* Glows */
+  --glow-blue:     rgba(140, 183, 254, 0.35);
+  --glow-purple:   rgba(209, 171, 253, 0.35);
+  --glow-green:    rgba(166, 227, 161, 0.35);
 }
 
-html, body, #root { height: 100%; background: var(--bg); color: var(--text); font-family: var(--font-ui); }
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  overflow: hidden;
+}
 
-::-webkit-scrollbar { width: 6px; height: 6px; }
+/* ── Scrollbars ── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-active); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-active); }
 
-/* ─── ReactBits animation keyframes ─────────────────── */
+/* ── Material Symbols ── */
+.msi {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
 
-/* StarBorder — comet traces top/bottom edge */
+/* ── Grid dot background ── */
+.grid-bg {
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(140, 183, 254, 0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* ── Glass panel ── */
+.glass {
+  background: rgba(18, 18, 42, 0.88);
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  border: 1px solid rgba(71, 70, 88, 0.3);
+}
+
+/* ── ReactBits animation keyframes ── */
 @keyframes star-move-bottom {
   0%   { transform: translate(0%, 0%);    opacity: 1; }
   100% { transform: translate(-100%, 0%); opacity: 0; }
@@ -50,27 +116,41 @@ html, body, #root { height: 100%; background: var(--bg); color: var(--text); fon
   0%   { transform: translate(0%, 0%);   opacity: 1; }
   100% { transform: translate(100%, 0%); opacity: 0; }
 }
-
-/* ShinyText — shimmer sweep */
 @keyframes shiny-sweep {
   0%   { background-position: 200% center; }
   100% { background-position: -200% center; }
 }
-
-/* Glow pulse for active nodes */
 @keyframes glow-pulse {
   0%, 100% { box-shadow: 0 0 8px var(--glow-blue),  0 0 20px var(--glow-blue); }
   50%       { box-shadow: 0 0 18px var(--glow-blue), 0 0 40px var(--glow-blue); }
 }
-
-/* Tab active underline slide */
 @keyframes tab-slide-in {
   from { transform: scaleX(0); }
   to   { transform: scaleX(1); }
 }
-
-/* Scan line — premium panel header effect */
 @keyframes scan-line {
   0%   { background-position: 0 0; }
   100% { background-position: 0 100px; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.5); }
+}
+@keyframes logo-glow {
+  0%, 100% { text-shadow: 0 0 12px rgba(140,183,254,0.45); }
+  50%       { text-shadow: 0 0 28px rgba(140,183,254,0.8), 0 0 48px rgba(140,183,254,0.25); }
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(12px); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+@keyframes border-glow-flow {
+  0%   { box-shadow: 0 0 0 1px rgba(140,183,254,0.15); }
+  50%  { box-shadow: 0 0 0 1px rgba(209,171,253,0.25), 0 0 16px rgba(140,183,254,0.1); }
+  100% { box-shadow: 0 0 0 1px rgba(140,183,254,0.15); }
 }
